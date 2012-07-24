@@ -65,16 +65,9 @@ def start(start_cmd)
     cruise_process = `ps -ea -o 'pid'`.split("\n").grep(/#{cruise_pid}/).first
     FileUtils.rm(cruise_pid_file) unless cruise_process
   end
-
-  output = `#{su_if_needed(cmd)} 2>&1`
-  if $?.success?
-    print output + "\n"
-    return 0
-  else
-    log(:err, output)
-    print output + "\n"
-    return 1
-  end
+  pid = Kernel.spawn "#{su_if_needed(cmd)} 2>&1"
+  Process.waitpid(pid)
+  return $?.success? ? 0 : 1
 end
 
 def stop
