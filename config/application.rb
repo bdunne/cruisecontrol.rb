@@ -36,7 +36,7 @@ module CruiseControl
   end
   
   def self.data_root
-    @data_root ||= Pathname.new( ENV['CRUISE_DATA_ROOT'] || File.join(CruiseControl.home_directory, ".cruise") )
+    @data_root ||= Pathname.new( ENV['CRUISE_DATA_ROOT'] || File.join(ENV['OPENSHIFT_DATA_DIR'], ".cruise") )
   end
   
   class Application < Rails::Application
