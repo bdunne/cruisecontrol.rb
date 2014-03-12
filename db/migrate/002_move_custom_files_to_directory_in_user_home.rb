@@ -12,9 +12,9 @@ else
 end
 
 if File.exists? RAILS_ROOT + '/config/site_config.rb'
-  mv RAILS_ROOT + '/config/site_config.rb', DATA_ROOT + '/site_config.rb'
-elsif !File.exists? DATA_ROOT + '/site_config.rb'
-  cp RAILS_ROOT + '/config/site_config.rb_example', DATA_ROOT + '/site_config.rb'
+  mv RAILS_ROOT + '/config/site_config.rb', DATA_ROOT + '/site_config'
+elsif !File.exists? DATA_ROOT + '/site_config'
+  cp RAILS_ROOT + '/config/site_config.rb_example', DATA_ROOT + '/site_config'
 end
 
 if File.exists? RAILS_ROOT + '/public/stylesheets/site.css'
