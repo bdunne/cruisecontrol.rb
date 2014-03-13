@@ -5,6 +5,10 @@ DATA_ROOT = ARGV[0]
 RAILS_ROOT = File.expand_path(File.dirname(__FILE__) + '/../..')
 puts "RAILS_ROOT = #{RAILS_ROOT}"
 
+if !File.exists? DATA_ROOT
+  mkdir_p DATA_ROOT
+end
+
 if File.directory? RAILS_ROOT + '/projects'
   mv RAILS_ROOT + '/projects', DATA_ROOT + '/projects'
 else
