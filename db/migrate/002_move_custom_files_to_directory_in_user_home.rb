@@ -5,6 +5,10 @@ DATA_ROOT = ARGV[0]
 RAILS_ROOT = File.expand_path(File.dirname(__FILE__) + '/../..')
 puts "RAILS_ROOT = #{RAILS_ROOT}"
 
+if !File.exists? DATA_ROOT
+  mkdir_p DATA_ROOT
+end
+
 if File.directory? RAILS_ROOT + '/projects'
   mv RAILS_ROOT + '/projects', DATA_ROOT + '/projects'
 else
@@ -12,9 +16,9 @@ else
 end
 
 if File.exists? RAILS_ROOT + '/config/site_config.rb'
-  mv RAILS_ROOT + '/config/site_config.rb', DATA_ROOT + '/site_config.rb'
-elsif !File.exists? DATA_ROOT + '/site_config.rb'
-  cp RAILS_ROOT + '/config/site_config.rb_example', DATA_ROOT + '/site_config.rb'
+  mv RAILS_ROOT + '/config/site_config.rb', DATA_ROOT + '/site_config'
+elsif !File.exists? DATA_ROOT + '/site_config'
+  cp RAILS_ROOT + '/config/site_config.rb_example', DATA_ROOT + '/site_config'
 end
 
 if File.exists? RAILS_ROOT + '/public/stylesheets/site.css'
