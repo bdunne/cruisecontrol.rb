@@ -1,5 +1,7 @@
 source "http://rubygems.org"
 
+gemspec
+
 gem "rails", "3.2.16"
 gem "tzinfo"#, "0.3.27"
 gem "rack"#, "1.2.3"
@@ -8,11 +10,12 @@ gem "bundler"#, "~> 1.0.12"
 gem "httparty", "0.6.1"
 gem "api_cache", "0.2.0"
 gem "xml-simple", '1.0.16', :require => 'xmlsimple'
-gem "rake", "~> 0.9.3"
+gem "rake"#, "~> 0.9.3"
 gem "jquery-rails", '1.0.9'
 gem "abstract", "1.0.0"
 gem "xmpp4r"
-gem "puma", '< 2.7.0'  # 2.7.[01] breaks compatibility with ruby 1.8.7
+#gem "puma", '< 2.7.0'  # 2.7.[01] breaks compatibility with ruby 1.8.7
+gem "thin"
 
 group :development do
   gem "rcov", '0.9.9', :platforms => [:ruby_18]
